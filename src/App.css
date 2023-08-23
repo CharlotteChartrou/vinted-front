@@ -60,3 +60,38 @@
   margin-top: 50px;
   border-color: white;
 }
+
+.display-offers img {
+  width: 230px;
+  height: 360px;
+  object-fit: cover;
+}
+
+.display-offers {
+  margin-top: 40px;
+  display: flex;
+  flex-direction: column;
+  width: 230px;
+  height: 370px;
+  flex-wrap: wrap;
+  overflow: hidden;
+}
+
+.display {
+  display: flex;
+  flex-direction: row;
+  gap: 5px;
+  flex-wrap: wrap;
+  overflow: hidden;
+}
+
+.price {
+  color: gray;
+}
+
+.title {
+  color: black;
+  width: 100%;
+  flex-wrap: wrap;
+  overflow: hidden;
+}
