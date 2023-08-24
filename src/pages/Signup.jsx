@@ -8,6 +8,7 @@ const Signup = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [username, setUserName] = useState("");
+  const [token, setToken] = useState("");
   const navigate = useNavigate();
 
   const handleSubmit = async (event) => {
@@ -20,6 +21,7 @@ const Signup = () => {
           password: password,
           email: email,
           newsletter: true,
+          token: token,
         }
       );
       console.log(response.data);
