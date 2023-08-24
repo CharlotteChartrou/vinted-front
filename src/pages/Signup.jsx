@@ -5,36 +5,20 @@ import Cookies from "js-cookie";
 
 const Signup = () => {
   const [data, setData] = useState(Cookies.get("token") || null);
-  const [newUser, setNewUser] = useState({ name: "", email: "", password: "" });
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [name, setName] = useState("");
   const [isLoading, setIsLoading] = useState(true);
-
-  const handleInput = (event) => {
-    setNewUser({ ...newUser, [event.target.name]: event.target.event });
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    axios.post("https://lereacteur-vinted-api.herokuapp.com/user/signup", {
+      name: name,
+      password: password,
+      email: email,
+    });
   };
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const handleSubmit = (event) => {
-          event.preventDefault(); // Pour empêcher le navigateur de changer de page lors de la soumission du formulaire
-          axios.post(
-            "https://lereacteur-vinted-api.herokuapp.com/user/signup",
-            {
-              newUser,
-            }
-          );
-          setIsLoading(false);
-        };
-      } catch (error) {
-        console.log("error");
-      }
-    };
-    fetchData();
-  }, []);
-
-  return isLoading ? (
-    <p>Loading</p>
-  ) : (
+  return (
     <div className="container">
       <div className="form">
         <h2>S'inscrire</h2>
@@ -42,27 +26,27 @@ const Signup = () => {
           <input
             placeholder="Nom d'utilisateur"
             type="text"
-            name="name"
-            onChange={handleInput}
+            value={name}
+            onChange={(event) => setName(event.target.value)}
           />
           <input
             placeholder="Email"
             type="email"
-            name="email"
-            onChange={handleInput}
+            value={email}
+            onChange={(event) => setEmail(event.target.value)}
           />
           <input
             placeholder="Mot de passe"
             type="password"
-            name="password"
-            onChange={handleInput}
+            value={password}
+            onChange={(event) => setPassword(event.target.value)}
           />
           <span className="checkbox-container">
             <span className="checkbox" style={{ color: "#666" }}>
               <input type="checkbox" name="price"></input> S'inscrire à notre
               newsletter
             </span>
-          </span>{" "}
+          </span>
           <div style={{ color: "#666" }}>
             En m'inscrivant je confirme avoir lu et accepté les Termes &
             Conditions et Politique de Confidentialité de Vinted. Je confirme
@@ -77,4 +61,5 @@ const Signup = () => {
     </div>
   );
 };
+
 export default Signup;
