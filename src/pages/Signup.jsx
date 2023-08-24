@@ -2,20 +2,33 @@ import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import Cookies from "js-cookie";
+import { useNavigate } from "react-router-dom";
 
 const Signup = () => {
-  const [data, setData] = useState(Cookies.get("token") || null);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [name, setName] = useState("");
-  const [isLoading, setIsLoading] = useState(true);
-  const handleSubmit = (event) => {
+  const [username, setUserName] = useState("");
+  const navigate = useNavigate();
+
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    axios.post("https://lereacteur-vinted-api.herokuapp.com/user/signup", {
-      name: name,
-      password: password,
-      email: email,
-    });
+    try {
+      const response = await axios.post(
+        "https://lereacteur-vinted-api.herokuapp.com/user/signup",
+        {
+          username: username,
+          password: password,
+          email: email,
+          newsletter: true,
+        }
+      );
+      console.log(reponse.data);
+      Cookies.set("token", response.data.token, { expires: 7 });
+      setToken(response.data.token);
+      navigate("/");
+    } catch (error) {
+      error.response;
+    }
   };
 
   return (
@@ -26,8 +39,8 @@ const Signup = () => {
           <input
             placeholder="Nom d'utilisateur"
             type="text"
-            value={name}
-            onChange={(event) => setName(event.target.value)}
+            value={username}
+            onChange={(event) => setUserName(event.target.value)}
           />
           <input
             placeholder="Email"
