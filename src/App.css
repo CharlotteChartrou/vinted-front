@@ -139,8 +139,8 @@
   align-items: center;
   align-content: center;
   width: 275px;
-  height: 250px;
-  gap: 30px;
+  margin-bottom: 30px;
+  gap: 20px;
 }
 
 .login {
@@ -155,7 +155,33 @@
   flex-direction: column;
   align-items: center;
   width: 100%;
-  background-color: bisque;
-  gap: 30px;
-  padding-top: 30px;
+  padding-top: 20px;
+}
+
+.form input {
+  border: none;
+  border-bottom: 1px solid #fcced3;
+  height: 35px;
+  margin-bottom: 20px;
+  width: 280px;
+}
+
+h2 {
+  font-size: 24px;
+  padding-bottom: 50px;
+}
+
+form button {
+  width: 280px;
+  border: none;
+  color: white;
+  background-color: #007783;
+  border-radius: 5px;
+  font-size: 16px;
+  width: 280px;
+  height: 45px;
+}
+
+.checkbox {
+  display: flex;
 }
