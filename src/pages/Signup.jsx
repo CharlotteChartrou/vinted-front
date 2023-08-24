@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import axios from "axios";
 import Cookies from "js-cookie";
 import { useNavigate } from "react-router-dom";
@@ -22,7 +22,7 @@ const Signup = () => {
           newsletter: true,
         }
       );
-      console.log(reponse.data);
+      console.log(response.data);
       Cookies.set("token", response.data.token, { expires: 7 });
       setToken(response.data.token);
       navigate("/");
