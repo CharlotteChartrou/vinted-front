@@ -12,40 +12,29 @@ const Signup = () => {
     setNewUser({ ...newUser, [event.target.name]: event.target.event });
   };
 
-  const handleSubmit = (event) => {
-    event.preventDefault(); // Pour empêcher le navigateur de changer de page lors de la soumission du formulaire
-    axios
-      .post("https://lereacteur-vinted-api.herokuapp.com/user/signup", {
-        newUser,
-      })
-      .then((response) => console.log(response))
-      .catch((err) => console.log(err));
-  };
-
-  /*   useEffect(() => {
+  useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await 
-          {
-            name: name,
-            email: email,
-            password: password,
-          }
-        );
-        setData(response.data);
-        console.log(response);
-        setIsLoading(false);
+        const handleSubmit = (event) => {
+          event.preventDefault(); // Pour empêcher le navigateur de changer de page lors de la soumission du formulaire
+          axios.post(
+            "https://lereacteur-vinted-api.herokuapp.com/user/signup",
+            {
+              newUser,
+            }
+          );
+          setIsLoading(false);
+        };
       } catch (error) {
-        console.log(error.message);
+        console.log("error");
       }
     };
-
     fetchData();
-  }, []); */
+  }, []);
 
-  /*   return isLoading ? (
+  return isLoading ? (
     <p>Loading</p>
-  ) : */ return (
+  ) : (
     <div className="container">
       <div className="form">
         <h2>S'inscrire</h2>
@@ -88,5 +77,4 @@ const Signup = () => {
     </div>
   );
 };
-
 export default Signup;
