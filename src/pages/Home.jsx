@@ -50,9 +50,7 @@ const Home = () => {
                   style={{ textDecoration: "none" }}
                 >
                   <span className="title">{product.product_name}</span>
-                  {product.product_pictures.map((photo) => {
-                    return <img src={photo.url} />;
-                  })}{" "}
+                  <img src={product.product_image.secure_url} />
                   <span className="price">{product.product_price}€</span>
                 </Link>
               </div>

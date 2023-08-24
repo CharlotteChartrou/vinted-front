@@ -19,9 +19,34 @@
 
 .button {
   display: flex;
+  flex-direction: row;
+  width: 100%;
+  margin-left: 510px;
   gap: 20px;
-  align-content: flex-end;
-  margin-left: 500px;
+
+  border-radius: 6px;
+  font-family: Arial;
+  font-size: 12px;
+}
+
+.button button {
+  outline: none;
+  width: 115px;
+  height: 30px;
+  background-color: white;
+  color: #007783;
+  border-radius: 6px;
+  border-color: #007783;
+}
+
+.button button:last-child {
+  outline: none;
+  width: 115px;
+  height: 30px;
+  border: 2px solid white;
+  border-radius: 6px;
+  color: white;
+  background-color: #007783;
 }
 
 .img-home img {
@@ -63,7 +88,7 @@
 
 .display-offers img {
   width: 230px;
-  height: 360px;
+  height: 300px;
   object-fit: cover;
 }
 
@@ -94,4 +119,43 @@
   width: 100%;
   flex-wrap: wrap;
   overflow: hidden;
+}
+
+.search-container {
+  width: 632px;
+  height: 100px;
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+}
+
+.search-container > input {
+  width: 100%;
+}
+
+.signup {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  align-content: center;
+  width: 275px;
+  height: 250px;
+  gap: 30px;
+}
+
+.login {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  align-content: center;
+  gap: 30px;
+}
+.form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  background-color: bisque;
+  gap: 30px;
+  padding-top: 30px;
 }

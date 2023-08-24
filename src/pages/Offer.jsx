@@ -12,9 +12,10 @@ const Offer = () => {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          "https://lereacteur-vinted-api.herokuapp.com/offers"
+          `https://lereacteur-vinted-api.herokuapp.com/offer/${id}`
         );
         setData(response.data);
+        console.log(response.data);
         setIsLoading(false);
       } catch (error) {
         console.log(error.message);
@@ -22,19 +23,16 @@ const Offer = () => {
     };
 
     fetchData();
-    console.log(data.offers);
-  }, []);
+  }, [id]);
 
   return isLoading ? (
     <p>Loading...</p>
   ) : (
     <div>
-      {data.offers.map((product, index) => {
-        id === product._id;
+      {data.product_details.map((product, index) => {
         return (
           <div>
-            <span className="title">{product.product_name}</span>
-            <span className="price">{product.product_price}€</span>
+            <span>{product.MARQUE}</span>
           </div>
         );
       })}
