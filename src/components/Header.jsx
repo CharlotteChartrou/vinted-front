@@ -35,9 +35,9 @@ const Header = ({
                   type="checkbox"
                   name="price"
                   onClick={(event) => {
-                    priceSort(true)
+                    priceSort !== "price-desc"
                       ? setPriceSort("price-desc")
-                      : setPriceSort("price-desc");
+                      : setPriceSort("price-asc");
                   }}
                 ></input>
               </span>

@@ -13,7 +13,7 @@ import Publish from "./pages/Publish";
 function App() {
   const [token, setToken] = useState(Cookies.get("token") || null);
   const [search, setSearch] = useState("");
-  const [priceSort, setPriceSort] = useState(true);
+  const [priceSort, setPriceSort] = useState("price-asc");
 
   const handleToken = (token) => {
     if (token) {
