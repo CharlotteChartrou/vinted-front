@@ -1,10 +1,11 @@
 import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import axios from "axios";
-
 import background from "../img/background-img.jpeg";
+import { useNavigate } from "react-router-dom";
 
 const Home = () => {
+  const navigate = useNavigate();
   const [data, setData] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
@@ -22,7 +23,6 @@ const Home = () => {
     };
 
     fetchData();
-    console.log(data.offers);
   }, []);
 
   return isLoading ? (
@@ -32,7 +32,9 @@ const Home = () => {
       <div className="container">
         <div className="bloc-home">
           <span>Prêts à faire du tri dans vos placards ?</span>
-          <button>Commencer à vendre</button>
+          <button onClick={() => navigate("/Publish")}>
+            Commencer à vendre
+          </button>
         </div>{" "}
       </div>
       <div className="img-home">
@@ -42,7 +44,6 @@ const Home = () => {
       <div className="container">
         <div className="display">
           {data.offers.map((product, index) => {
-            console.log(product.product_pictures);
             return (
               <div className="display-offers">
                 <Link

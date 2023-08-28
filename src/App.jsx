@@ -1,26 +1,41 @@
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
-
 import "./App.css";
-import Carousel from "react-multi-carousel";
+import { useState, useEffect } from "react";
+import Cookies from "js-cookie";
+
 import Header from "./components/Header";
 import Home from "./pages/Home";
 import Offer from "./pages/Offer";
 import Signup from "./pages/Signup";
 import Login from "./pages/Login";
-
-import { useState, useEffect } from "react";
+import Publish from "./pages/Publish";
 
 function App() {
   const [offersHome, setOffersHome] = useState([]);
+  const [token, setToken] = useState(Cookies.get("token") || null);
+
+  const handleToken = (token) => {
+    if (token) {
+      Cookies.set("token", token, { expires: 15 });
+      setToken(token);
+    } else {
+      Cookies.remove("token");
+      setToken(null);
+    }
+  };
 
   return (
     <Router>
-      <Header />
+      <Header token={token} handleToken={handleToken} />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/offer/:id" element={<Offer />} />
-        <Route path="/signup" element={<Signup />} />
-        <Route path="/login" element={<Login />} />
+        <Route path="/signup" element={<Signup handleToken={handleToken} />} />
+        <Route path="/login" element={<Login handleToken={handleToken} />} />
+        <Route
+          path="/publish"
+          element={<Publish handleToken={handleToken} />}
+        />
       </Routes>
     </Router>
   );

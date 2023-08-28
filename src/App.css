@@ -185,3 +185,9 @@ form button {
 .checkbox {
   display: flex;
 }
+
+.post {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}

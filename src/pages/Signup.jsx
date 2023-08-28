@@ -4,40 +4,39 @@ import axios from "axios";
 import Cookies from "js-cookie";
 import { useNavigate } from "react-router-dom";
 
-const Signup = () => {
+const Signup = ({ handleToken }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [username, setUserName] = useState("");
-  const [token, setToken] = useState("");
+  const [errorMessage, setErrorMessage] = useState("");
   const navigate = useNavigate();
-
-  const handleSubmit = async (event) => {
-    event.preventDefault();
-    try {
-      const response = await axios.post(
-        "https://lereacteur-vinted-api.herokuapp.com/user/signup",
-        {
-          username: username,
-          password: password,
-          email: email,
-          newsletter: true,
-          token: token,
-        }
-      );
-      console.log(response.data);
-      Cookies.set("token", response.data.token, { expires: 7 });
-      setToken(response.data.token);
-      navigate("/");
-    } catch (error) {
-      error.response;
-    }
-  };
 
   return (
     <div className="container">
       <div className="form">
         <h2>S'inscrire</h2>
-        <form className="signup" onSubmit={handleSubmit}>
+        <form
+          className="signup"
+          onSubmit={async (event) => {
+            event.preventDefault();
+            try {
+              setErrorMessage("");
+              const response = await axios.post(
+                "https://lereacteur-vinted-api.herokuapp.com/user/signup",
+                {
+                  username,
+                  password,
+                  email,
+                  newsletter: true,
+                }
+              );
+              handleToken(response.data.token);
+              navigate("/");
+            } catch (error) {
+              console.log(error.message);
+            }
+          }}
+        >
           <input
             placeholder="Nom d'utilisateur"
             type="text"

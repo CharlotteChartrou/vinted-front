@@ -2,7 +2,7 @@ import logo from "../img/vinted_logo.png";
 import { useNavigate } from "react-router-dom";
 import Cookies from "js-cookie";
 
-const Header = () => {
+const Header = ({ token, handleToken }) => {
   const navigate = useNavigate();
 
   return (
@@ -12,7 +12,7 @@ const Header = () => {
           <div>
             <img onClick={() => navigate("/")} src={logo} alt="logo" />
           </div>
-          <div class="search-container">
+          <div className="search-container">
             <input type="search" placeholder="Recherche des articles"></input>
             <div>
               <span>Trier par prix</span>{" "}
@@ -22,25 +22,30 @@ const Header = () => {
             </div>
           </div>
           <div className="button">
-            {Cookies.get("token") ? (
+            {token ? (
               <button
-                style={{ "background-color": "red", color: "white" }}
-                onClick={() => Cookies.remove("token") && navigate("/")}
+                style={{ backgroundColor: "red", color: "white" }}
+                onClick={() => {
+                  handleToken(null);
+                  navigate("/");
+                }}
               >
                 se déconnecter
               </button>
             ) : (
               <div>
-                <button class="butt-1" onClick={() => navigate("/Signup")}>
+                <button className="butt-1" onClick={() => navigate("/Signup")}>
                   s'inscrire
                 </button>
-                <button class="butt-1" onClick={() => navigate("/Login")}>
+                <button className="butt-1" onClick={() => navigate("/Login")}>
                   se connecter
                 </button>
               </div>
             )}
 
-            <button class="butt-2">vends tes articles</button>
+            <button className="butt-2" onClick={() => navigate("/Publish")}>
+              vends tes articles
+            </button>
           </div>
         </div>
       </div>
