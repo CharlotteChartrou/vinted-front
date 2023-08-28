@@ -4,7 +4,7 @@ import axios from "axios";
 import background from "../img/background-img.jpeg";
 import { useNavigate } from "react-router-dom";
 
-const Home = ({ search }) => {
+const Home = ({ search, priceSort }) => {
   const navigate = useNavigate();
   const [data, setData] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
@@ -13,10 +13,11 @@ const Home = ({ search }) => {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          `https://lereacteur-vinted-api.herokuapp.com/offers?title=${search}`
+          `https://lereacteur-vinted-api.herokuapp.com/offers?sort=${priceSort}&title=${search}`
         );
         setData(response.data);
         console.log(response.data);
+        console.log(priceSort);
         setIsLoading(false);
       } catch (error) {
         console.log(error.message);
@@ -24,7 +25,7 @@ const Home = ({ search }) => {
     };
 
     fetchData();
-  }, [search]);
+  }, [search, priceSort]);
 
   return isLoading ? (
     <p>Loading...</p>
@@ -62,6 +63,18 @@ const Home = ({ search }) => {
                   </div>
                   <img src={offer.product_image.secure_url} />
                   <div className="price">{offer.product_price}€</div>
+
+                  {offer.product_details.map((detail, index) => {
+                    if (detail.MARQUE || detail.TAILLE) {
+                      return (
+                        <p key={index} className="offer-info-home">
+                          {detail.MARQUE || detail.TAILLE}
+                        </p>
+                      );
+                    } else {
+                      return null;
+                    }
+                  })}
                 </Link>
               </div>
             );

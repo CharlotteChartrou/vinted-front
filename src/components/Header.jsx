@@ -1,7 +1,15 @@
 import logo from "../img/vinted_logo.png";
 import { useNavigate } from "react-router-dom";
+import { Range } from "react-range";
 
-const Header = ({ token, handleToken, search, setSearch }) => {
+const Header = ({
+  token,
+  handleToken,
+  search,
+  setSearch,
+  priceSort,
+  setPriceSort,
+}) => {
   const navigate = useNavigate();
 
   return (
@@ -21,10 +29,19 @@ const Header = ({ token, handleToken, search, setSearch }) => {
               }}
             ></input>
             <div>
-              <span>Trier par prix</span>{" "}
+              <span>Trier par prix</span>
               <span className="check-box">
-                <input type="checkbox" name="price"></input>
+                <input
+                  type="checkbox"
+                  name="price"
+                  onClick={(event) => {
+                    priceSort(true)
+                      ? setPriceSort("price-desc")
+                      : setPriceSort("price-desc");
+                  }}
+                ></input>
               </span>
+              <span>Prix entre :</span>
             </div>
           </div>
           <div className="button">
