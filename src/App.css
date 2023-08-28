@@ -249,7 +249,7 @@ h2 {
 .input-design-default,
 .input-design-image {
   align-items: center;
-  border: 1px solid #0ab1ba;
+  border: 1px solid #007783;
   border-radius: 4px;
   display: flex;
   height: 45px;
@@ -266,7 +266,7 @@ h2 {
 }
 
 .label-file {
-  color: #0ab1ba;
+  color: #007783;
   cursor: pointer;
   font-weight: 700;
 }
@@ -285,7 +285,7 @@ input[type="file" i] {
 }
 
 .form-validation {
-  background-color: #0ab1ba;
+  background-color: #007783;
   padding: 12px;
   border: none;
   border-radius: 4px;
@@ -383,9 +383,9 @@ h6 {
 }
 
 .buy-button {
-  background-color: #0ab1ba;
+  background-color: #007783;
   width: 100%;
-  padding: 12px;
+  padding: 10px;
   font-size: 16px;
   border: none;
   border-radius: 4px;
@@ -401,4 +401,94 @@ h6 {
 .price {
   color: black;
   font-size: 16px;
+}
+
+#slider {
+  background: lightgray;
+  width: 360px;
+}
+
+#slider .range-slider__range {
+  background-color: #007783;
+  transition: height 0.3s;
+}
+
+#slider .range-slider__thumb {
+  background: #007783;
+  transition: transform 0.3s;
+}
+.slider {
+  display: flex;
+  align-items: center;
+  width: 70%;
+  gap: 5px;
+  margin-left: 5px;
+}
+
+.sort {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  width: 30%;
+  padding-top: 3px;
+}
+
+.input-sort {
+  margin-top: 20px;
+  width: 630px;
+  display: flex;
+}
+
+.input-sort span {
+  font-size: 12px;
+}
+
+.switch {
+  display: inline-block;
+  position: relative;
+  width: 40px;
+  height: 20px;
+  cursor: pointer;
+  overflow: hidden;
+}
+
+.switch input {
+  position: absolute;
+  top: -30px;
+  left: -30px;
+  width: 0;
+  height: 0;
+}
+.switch input + span {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: #007783;
+  border-radius: 20px;
+  border: 0, 7px solid black;
+}
+
+.switch input:checked + span {
+  background: #007783;
+}
+
+.switch input + span:before {
+  content: "";
+  display: inline-block;
+  position: absolute;
+  top: 50%;
+  left: 1px;
+  width: 19px;
+  height: 19px;
+  background: white;
+  border: 0, 7px solid black;
+  border-radius: 50%;
+  transform: translateY(-50%);
+  transition: all 0.5s;
+}
+
+.switch input:checked + span:before {
+  left: 20px;
 }
