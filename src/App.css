@@ -3,6 +3,10 @@
   margin: auto;
 }
 
+body {
+  background-color: #eaedee;
+}
+
 .header-bloc {
   display: flex;
   width: 100%;
@@ -190,4 +194,45 @@ form button {
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+.text-input {
+  display: flex;
+
+  justify-content: space-between;
+  padding: 24px;
+}
+
+.text-input-section {
+  width: 100%;
+  background-color: #fff;
+  box-shadow: 0 0 2px gray;
+  margin: 20px 0;
+}
+
+.file-select {
+  width: 100%;
+  background-color: #fff;
+  box-shadow: 0 0 2px gray;
+  margin: 20px 0;
+}
+
+.text-input > h4 {
+  font-weight: 400;
+  margin: 0;
+  vertical-align: initial;
+  color: grey;
+}
+
+h2 {
+  font-size: 24px;
+  padding-top: 40px;
+}
+
+.post input {
+  border: none;
+  border-bottom: 1px solid lightgray;
+  height: 35px;
+  margin-bottom: 20px;
+  width: 780px;
 }
