@@ -28,14 +28,44 @@ const Offer = () => {
   return isLoading ? (
     <p>Loading...</p>
   ) : (
-    <div>
-      {data.product_details.map((product, index) => {
-        return (
-          <div>
-            <span>{product.MARQUE}</span>
+    <div className="container">
+      <div className="offer">
+        <div className="img-offer">
+          <img src={data.product_image.secure_url} alt={data.product_name} />
+        </div>
+        <div className="bloc-product">
+          <div className="description">
+            <p className="price-offer">{data.product_price} €</p>
+            {data.product_details.map((detail, index) => {
+              const keys = Object.keys(detail);
+              const key = keys[0];
+
+              return (
+                <div key={index} className="product-info">
+                  <span className="key">{key}</span>
+
+                  <span className="key-description">{detail[key]}</span>
+                </div>
+              );
+            })}
           </div>
-        );
-      })}
+          <div className="description-bloc">
+            <h6>{data.product_name}</h6>
+            <div className="prod-descr">{data.product_description}</div>
+            <div className="owner-info">
+              {data.owner.account.avatar && (
+                <img
+                  src={data.owner.account.avatar.secure_url}
+                  alt={data.owner.account.username}
+                />
+              )}
+
+              {data.owner.account.username}
+            </div>{" "}
+            <button className="buy-button">Acheter</button>
+          </div>
+        </div>
+      </div>
     </div>
   );
 };

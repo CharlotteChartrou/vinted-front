@@ -30,7 +30,11 @@ const Header = ({ token, handleToken, search, setSearch }) => {
           <div className="button">
             {token ? (
               <button
-                style={{ backgroundColor: "red", color: "white" }}
+                style={{
+                  backgroundColor: "red",
+                  color: "white",
+                  border: "none",
+                }}
                 onClick={() => {
                   handleToken(null);
                   navigate("/");

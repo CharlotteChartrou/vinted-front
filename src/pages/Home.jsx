@@ -16,6 +16,7 @@ const Home = ({ search }) => {
           `https://lereacteur-vinted-api.herokuapp.com/offers?title=${search}`
         );
         setData(response.data);
+        console.log(response.data);
         setIsLoading(false);
       } catch (error) {
         console.log(error.message);
@@ -35,24 +36,32 @@ const Home = ({ search }) => {
           <button onClick={() => navigate("/Publish")}>
             Commencer à vendre
           </button>
-        </div>{" "}
+        </div>
       </div>
       <div className="img-home">
         <img src={background} alt="background" />
       </div>
-
       <div className="container">
         <div className="display">
-          {data.offers.map((product, index) => {
+          {data.offers.map((offer) => {
+            console.log(offer);
             return (
-              <div className="display-offers" key={index}>
+              <div className="display-offers" key={offer._id}>
                 <Link
-                  to={`/offer/${product._id}`}
+                  to={`/offer/${offer._id}`}
                   style={{ textDecoration: "none" }}
                 >
-                  <span className="title">{product.product_name}</span>
-                  <img src={product.product_image.secure_url} />
-                  <span className="price">{product.product_price}€</span>
+                  <div className="owner-info-home">
+                    {offer.owner.account.avatar && (
+                      <img
+                        src={offer.owner.account.avatar.secure_url}
+                        alt={offer.owner.account.username}
+                      />
+                    )}
+                    <span>{offer.owner.account.username}</span>
+                  </div>
+                  <img src={offer.product_image.secure_url} />
+                  <div className="price">{offer.product_price}€</div>
                 </Link>
               </div>
             );

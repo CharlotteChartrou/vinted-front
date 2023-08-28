@@ -1,5 +1,5 @@
 .container {
-  width: 1200px;
+  width: 1280px;
   margin: auto;
 }
 
@@ -100,10 +100,9 @@ body {
   margin-top: 40px;
   display: flex;
   flex-direction: column;
-  width: 230px;
-  height: 370px;
+  width: 240px;
+  height: 460px;
   flex-wrap: wrap;
-  overflow: hidden;
 }
 
 .display {
@@ -287,4 +286,98 @@ input[type="file" i] {
   width: 100%;
   display: flex;
   justify-content: flex-end;
+}
+
+.offer {
+  display: flex;
+  height: 600px;
+  justify-content: space-around;
+  margin-top: 40px;
+}
+
+.bloc-product {
+  height: 600px;
+  width: 400px;
+  background-color: white;
+  border-radius: 4px;
+}
+.description {
+  border-bottom: 1px solid lightgray;
+}
+
+.img-offer img {
+  height: 600px;
+  border-radius: 4px;
+  object-fit: cover;
+  width: 400px;
+}
+
+.product-info {
+  display: flex;
+  padding: 10px 40px;
+}
+
+.key {
+  color: gray;
+  width: 50%;
+}
+
+.price-offer {
+  padding: 30px 0 20px 40px;
+  font-size: 30px;
+}
+
+.owner-info img {
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  object-fit: cover;
+}
+.owner-info-home img {
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  object-fit: cover;
+}
+
+.owner-info-home {
+  display: flex;
+  width: 100%;
+  gap: 10px;
+  align-items: center;
+  padding-bottom: 10px;
+  color: black;
+}
+
+.owner-info {
+  display: flex;
+  width: 100%;
+  gap: 10px;
+  align-items: center;
+  padding-bottom: 15px;
+}
+
+h6 {
+  font-weight: bold;
+  font-size: 16px;
+  padding-bottom: 15px;
+}
+.prod-descr {
+  font-size: 16px;
+  color: #666666;
+  padding-bottom: 15px;
+}
+
+.description-bloc {
+  padding: 20px 40px;
+}
+
+.buy-button {
+  background-color: #0ab1ba;
+  width: 100%;
+  padding: 12px;
+  font-size: 16px;
+  border: none;
+  border-radius: 4px;
+  color: #fff;
 }
