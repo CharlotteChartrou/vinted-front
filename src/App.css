@@ -236,3 +236,55 @@ h2 {
   margin-bottom: 20px;
   width: 780px;
 }
+
+.input-design-default,
+.input-design-image {
+  align-items: center;
+  border: 1px solid #0ab1ba;
+  border-radius: 4px;
+  display: flex;
+  height: 45px;
+  justify-content: center;
+}
+
+.dashed-preview-without {
+  align-items: center;
+  border: 1px dashed #ebedee;
+  border-radius: 3px;
+  display: flex;
+  height: 200px;
+  justify-content: center;
+}
+
+.label-file {
+  color: #0ab1ba;
+  cursor: pointer;
+  font-weight: 700;
+}
+
+input[type="file" i] {
+  appearance: none;
+  background-color: initial;
+  cursor: default;
+  align-items: baseline;
+  color: inherit;
+  text-overflow: ellipsis;
+  text-align: start !important;
+  padding: initial;
+  border: initial;
+  overflow: hidden !important;
+}
+
+.form-validation {
+  background-color: #0ab1ba;
+  padding: 12px;
+  border: none;
+  border-radius: 4px;
+  color: #fff;
+  margin: 50px 0;
+}
+.form-button-div {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+}

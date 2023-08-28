@@ -4,7 +4,7 @@ import axios from "axios";
 import background from "../img/background-img.jpeg";
 import { useNavigate } from "react-router-dom";
 
-const Home = () => {
+const Home = ({ search }) => {
   const navigate = useNavigate();
   const [data, setData] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
@@ -13,7 +13,7 @@ const Home = () => {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          "https://lereacteur-vinted-api.herokuapp.com/offers"
+          `https://lereacteur-vinted-api.herokuapp.com/offers?title=${search}`
         );
         setData(response.data);
         setIsLoading(false);
@@ -23,7 +23,7 @@ const Home = () => {
     };
 
     fetchData();
-  }, []);
+  }, [search]);
 
   return isLoading ? (
     <p>Loading...</p>
@@ -45,7 +45,7 @@ const Home = () => {
         <div className="display">
           {data.offers.map((product, index) => {
             return (
-              <div className="display-offers">
+              <div className="display-offers" key={index}>
                 <Link
                   to={`/offer/${product._id}`}
                   style={{ textDecoration: "none" }}

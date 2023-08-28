@@ -2,7 +2,6 @@ import { useState } from "react";
 import axios from "axios";
 
 const Publish = ({ token }) => {
-  /*   const [user, setUser] = useState(""); */
   const [picture, setPicture] = useState();
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
@@ -24,8 +23,6 @@ const Publish = ({ token }) => {
             event.preventDefault();
             try {
               const formData = new FormData();
-
-              /*      formData.append("user", user); */
               formData.append("picture", picture);
               formData.append("title", title);
               formData.append("description", description);
@@ -47,7 +44,6 @@ const Publish = ({ token }) => {
                   },
                 }
               );
-              console.log(formData);
               setImgFromCloudinary(response.data.secure_url);
             } catch (error) {
               console.log(error.response);
@@ -55,12 +51,21 @@ const Publish = ({ token }) => {
           }}
         >
           <div className="file-select">
-            <input
-              type="file"
-              onChange={(event) => {
-                setPicture(event.target.files[0]);
-              }}
-            />
+            <div className="dashed-preview-without">
+              <div className="input-design-default">
+                <label for="file" className="label-file">
+                  <span>+</span>
+                  <span>Ajoute une photo</span>{" "}
+                </label>
+                <input
+                  type="file"
+                  className="input-file"
+                  onChange={(event) => {
+                    setPicture(event.target.files[0]);
+                  }}
+                />
+              </div>
+            </div>
           </div>
 
           <div className="text-input-section">
@@ -145,18 +150,25 @@ const Publish = ({ token }) => {
             </div>
           </div>
           <div className="text-input-section">
-            <h4>Prix</h4>
-            <input
-              type="text"
-              placeholder="0,00€"
-              value={price}
-              onChange={(event) => {
-                setPrice(event.target.value);
-              }}
-            />
-            <input type="checkbox" name="checkbox"></input>
+            <div className="text-input">
+              <h4>Prix</h4>
+              <input
+                type="text"
+                placeholder="0,00€"
+                value={price}
+                onChange={(event) => {
+                  setPrice(event.target.value);
+                }}
+              />{" "}
+            </div>
+            <div className="checkbox-input">
+              <input type="checkbox" name="exchange"></input>
+              <span>Je suis intéressé(e) par les échanges</span>
+            </div>
           </div>
-          <input type="submit" value="Ajouter" />
+          <div className="form-button-div">
+            <input type="submit" value="Ajouter" className="form-validation" />
+          </div>
         </form>
       </div>
     </>

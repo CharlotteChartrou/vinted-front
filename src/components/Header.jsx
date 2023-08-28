@@ -1,8 +1,7 @@
 import logo from "../img/vinted_logo.png";
 import { useNavigate } from "react-router-dom";
-import Cookies from "js-cookie";
 
-const Header = ({ token, handleToken }) => {
+const Header = ({ token, handleToken, search, setSearch }) => {
   const navigate = useNavigate();
 
   return (
@@ -13,7 +12,14 @@ const Header = ({ token, handleToken }) => {
             <img onClick={() => navigate("/")} src={logo} alt="logo" />
           </div>
           <div className="search-container">
-            <input type="search" placeholder="Recherche des articles"></input>
+            <input
+              type="search"
+              value={search}
+              placeholder="Recherche des articles"
+              onChange={(event) => {
+                setSearch(event.target.value);
+              }}
+            ></input>
             <div>
               <span>Trier par prix</span>{" "}
               <span className="check-box">
