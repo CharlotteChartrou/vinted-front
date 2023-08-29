@@ -54,9 +54,8 @@ const Publish = ({ token }) => {
             <div className="dashed-preview-without">
               <div className="input-design-default">
                 <label htmlFor="filePicker" className="label-file">
-                  + Ajoute une photo{" "}
+                  + Ajoute une photo
                 </label>
-
                 <input
                   style={{ display: "none" }}
                   type="file"
