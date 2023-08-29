@@ -526,7 +526,7 @@ input:focus {
 .form-order {
   display: flex;
   flex-direction: column;
-  gap: 15px;
+  gap: 40px;
   margin-bottom: 30px;
   border-bottom: 1px lightgray solid;
   padding-bottom: 30px;
@@ -539,7 +539,19 @@ h3 {
 }
 .total {
   font-weight: bold;
-  font-size: 16px;
+  font-size: 20px;
+  display: flex;
+  flex-direction: row;
+}
+
+.total > span:last-child {
+  text-align: end;
+  width: 50%;
+  font-size: 17px;
+}
+
+.total > span {
+  width: 70%;
 }
 
 .lign-order {
@@ -549,4 +561,15 @@ h3 {
 
 .lign-order > span {
   width: 70%;
+}
+
+.lign-order > span:last-child {
+  text-align: end;
+  width: 50%;
+  font-size: 17px;
+}
+
+.bold {
+  font-size: 17px;
+  color: #007783;
 }

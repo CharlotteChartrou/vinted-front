@@ -55,12 +55,13 @@ const CheckoutForm = ({ title, price, name }) => {
             <span>Frais de port</span> <span>{deliveryFee}€</span>
           </div>
           <div className="total">
-            Total <span>{total} €</span>
+            <span>Total</span> <span>{total} €</span>
           </div>
           <div>
             Il ne vous reste plus qu'une étape pour vous offrir{" "}
-            <span>{title}</span> Vous allez payer {total} € (frais de protection
-            et frais de port inclus).
+            <span className="bold">{title}</span> Vous allez payer{" "}
+            <span className="bold">{total} €</span> (frais de protection et
+            frais de port inclus).
           </div>
         </div>
         <CardElement />
