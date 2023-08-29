@@ -53,11 +53,12 @@ const Publish = ({ token }) => {
           <div className="file-select">
             <div className="dashed-preview-without">
               <div className="input-design-default">
-                <label for="file" className="label-file">
-                  <span>+</span>
-                  <span>Ajoute une photo</span>{" "}
+                <label htmlFor="filePicker" className="label-file">
+                  + Ajoute une photo{" "}
                 </label>
+
                 <input
+                  style={{ display: "none" }}
                   type="file"
                   className="input-file"
                   onChange={(event) => {

@@ -1,6 +1,6 @@
 import logo from "../img/vinted_logo.png";
 import { useNavigate } from "react-router-dom";
-import { Range } from "react-range";
+
 import RangeSlider from "react-range-slider-input";
 import "react-range-slider-input/dist/style.css";
 
@@ -79,17 +79,18 @@ const Header = ({
                 se déconnecter
               </button>
             ) : (
-              <div>
-                <button className="butt-1" onClick={() => navigate("/Signup")}>
-                  s'inscrire
-                </button>
-                <button className="butt-1" onClick={() => navigate("/Login")}>
-                  se connecter
-                </button>
+              <div className="butt-1">
+                <button onClick={() => navigate("/signup")}>s'inscrire</button>
+                <button onClick={() => navigate("/login")}>se connecter</button>
               </div>
             )}
 
-            <button className="butt-2" onClick={() => navigate("/Publish")}>
+            <button
+              style={{ color: "white", backgroundColor: "#007783" }}
+              onClick={() => {
+                token ? navigate("/publish") : navigate("/login");
+              }}
+            >
               vends tes articles
             </button>
           </div>

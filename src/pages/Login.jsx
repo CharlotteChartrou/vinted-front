@@ -10,46 +10,44 @@ const Login = ({ handleToken }) => {
   const navigate = useNavigate();
 
   return (
-    <div className="container">
-      <div className="form">
-        <h2>Se connecter</h2>
-        <form
-          className="login"
-          onSubmit={async (event) => {
-            event.preventDefault();
-            try {
-              const response = await axios.post(
-                "https://lereacteur-vinted-api.herokuapp.com/user/login",
-                {
-                  email,
-                  password,
-                }
-              );
-              handleToken(response.data.token);
-              navigate("/publish");
-            } catch (error) {
-              console.log(error.response.data);
-            }
-          }}
-        >
-          <input
-            placeholder="Adresse mail"
-            type="email"
-            value={email}
-            onChange={(event) => setEmail(event.target.value)}
-          ></input>
-          <input
-            placeholder="Mot de passe"
-            type="password"
-            value={password}
-            onChange={(event) => setPassword(event.target.value)}
-          ></input>
-          <button type="submit">Se Connecter</button>
-        </form>
-        <Link to="/signup" style={{ textDecoration: "none", color: "#007783" }}>
-          Pas encore de compte ? Inscris-toi !
-        </Link>
-      </div>
+    <div className="form">
+      <h2>Se connecter</h2>
+      <form
+        className="login"
+        onSubmit={async (event) => {
+          event.preventDefault();
+          try {
+            const response = await axios.post(
+              "https://lereacteur-vinted-api.herokuapp.com/user/login",
+              {
+                email,
+                password,
+              }
+            );
+            handleToken(response.data.token);
+            navigate("/publish");
+          } catch (error) {
+            console.log(error.response.data);
+          }
+        }}
+      >
+        <input
+          placeholder="Adresse mail"
+          type="email"
+          value={email}
+          onChange={(event) => setEmail(event.target.value)}
+        ></input>
+        <input
+          placeholder="Mot de passe"
+          type="password"
+          value={password}
+          onChange={(event) => setPassword(event.target.value)}
+        ></input>
+        <button type="submit">Se Connecter</button>
+      </form>
+      <Link to="/signup" style={{ textDecoration: "none", color: "#007783" }}>
+        Pas encore de compte ? Inscris-toi !
+      </Link>
     </div>
   );
 };
