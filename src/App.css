@@ -513,3 +513,40 @@ input:focus {
   content: "⇣";
   left: 20px;
 }
+
+.form-checkout {
+  padding: 15px;
+  width: 400px;
+  height: 600px;
+  border: solid red 2px;
+  background-color: white;
+  margin-top: 40px;
+}
+
+.form-order {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin-bottom: 30px;
+  border-bottom: 1px lightgray solid;
+  padding-bottom: 30px;
+}
+
+h3 {
+  font-size: 15px;
+  color: lightgray;
+  margin-bottom: 20px;
+}
+.total {
+  font-weight: bold;
+  font-size: 16px;
+}
+
+.lign-order {
+  display: flex;
+  flex-direction: row;
+}
+
+.lign-order > span {
+  width: 70%;
+}

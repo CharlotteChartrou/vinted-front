@@ -17,6 +17,7 @@ const Offer = ({ token }) => {
           `https://lereacteur-vinted-api.herokuapp.com/offer/${id}`
         );
         setData(response.data);
+        console.log(response.data);
 
         setIsLoading(false);
       } catch (error) {
@@ -69,7 +70,11 @@ const Offer = ({ token }) => {
               onClick={() => {
                 token
                   ? navigate("/payment", {
-                      state: { title: "Toto", price: "12" },
+                      state: {
+                        title: data.product_name,
+                        price: data.product_price,
+                        name: data.owner.account._id,
+                      },
                     })
                   : navigate("/login");
               }}
