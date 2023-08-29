@@ -2,17 +2,14 @@ import { CardElement, useStripe, useElements } from "@stripe/react-stripe-js";
 import axios from "axios";
 import { useState } from "react";
 
-const CheckoutForm = ({ title, price, name }) => {
+const CheckoutForm = ({ title, price, id }) => {
   const [isLoading, setIsLoading] = useState(false);
   const [paymentCompleted, setPaymentCompleted] = useState(false);
   const stripe = useStripe();
   const elements = useElements();
-  console.log({ name });
-
   const customFee = Number(1);
   const deliveryFee = Number(3);
   const total = customFee + deliveryFee + price;
-  console.log(total);
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
@@ -20,14 +17,14 @@ const CheckoutForm = ({ title, price, name }) => {
       const cardElement = elements.getElement(CardElement);
 
       const stripeResponse = await stripe.createToken(cardElement, {
-        name: name,
+        name: id,
       });
 
       const stripeToken = stripeResponse.token.id;
-      console.log(stripeToken);
+
       const response = await axios.post(
         "https://lereacteur-vinted-api.herokuapp.com/payment",
-        { stripeToken: stripeToken, title: title, amount: total }
+        { token: stripeToken, title: title, amount: total }
       );
 
       console.log(response.data);
@@ -69,7 +66,20 @@ const CheckoutForm = ({ title, price, name }) => {
           <div>Payment Completed</div>
         ) : (
           <div>
-            <input type="submit" disabled={isLoading} />
+            <input
+              style={{
+                backgroundColor: "#03C06D",
+                color: "white",
+                border: "none",
+                width: "100%",
+                borderRadius: "3px",
+                padding: "10px",
+                marginTop: "30px",
+              }}
+              type="submit"
+              disabled={isLoading}
+              placeholder="Envoyer"
+            />
           </div>
         )}
       </form>

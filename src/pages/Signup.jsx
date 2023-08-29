@@ -3,11 +3,12 @@ import { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
-const Signup = ({ handleToken }) => {
+const Signup = ({ handleToken, handleID }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [username, setUserName] = useState("");
-  const [errorMessage, setErrorMessage] = useState("");
+  const [newsLetter, setNewsLetter] = useState(false);
+
   const navigate = useNavigate();
 
   return (
@@ -18,17 +19,18 @@ const Signup = ({ handleToken }) => {
         onSubmit={async (event) => {
           event.preventDefault();
           try {
-            setErrorMessage("");
             const response = await axios.post(
               "https://lereacteur-vinted-api.herokuapp.com/user/signup",
               {
                 username,
                 password,
                 email,
-                newsletter: true,
+                newsletter: newsLetter,
               }
             );
+            console.log(response.data);
             handleToken(response.data.token);
+            handleID(response.data._id);
             navigate("/");
           } catch (error) {
             console.log(error.message);
@@ -57,7 +59,11 @@ const Signup = ({ handleToken }) => {
         <label className="checkbox">
           <input
             type="checkbox"
+            checked={newsLetter}
             style={{ borderColor: "grey", borderRadius: "10px" }}
+            onChange={() => {
+              setNewsLetter(!newsLetter);
+            }}
           ></input>
           <span className="news" style={{ color: "#666" }}>
             S'inscrire à notre newsletter

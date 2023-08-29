@@ -8,18 +8,16 @@ const stripePromise = loadStripe(
 
 import CheckoutForm from "../components/CheckoutForm";
 
-const Payment = () => {
+const Payment = ({ id }) => {
   const location = useLocation();
   const { title } = location.state;
   const { price } = location.state;
-  const { name } = location.state;
-  console.log({ name });
 
   return (
     <>
       <div className="container">
         <Elements className="stripe-page" stripe={stripePromise}>
-          <CheckoutForm title={title} price={price} name={name} />
+          <CheckoutForm title={title} price={price} id={id} />
         </Elements>
       </div>
     </>

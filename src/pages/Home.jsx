@@ -4,7 +4,7 @@ import axios from "axios";
 import background from "../img/background-img.jpeg";
 import { useNavigate } from "react-router-dom";
 
-const Home = ({ search, priceSort, value }) => {
+const Home = ({ search, priceSort, value, token }) => {
   const navigate = useNavigate();
   const [data, setData] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
@@ -35,7 +35,11 @@ const Home = ({ search, priceSort, value }) => {
       <div className="container">
         <div className="bloc-home">
           <span>Prêts à faire du tri dans vos placards ?</span>
-          <button onClick={() => navigate("/Publish")}>
+          <button
+            onClick={() => {
+              token ? navigate("/publish") : navigate("/login");
+            }}
+          >
             Commencer à vendre
           </button>
         </div>

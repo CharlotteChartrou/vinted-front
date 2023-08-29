@@ -13,6 +13,8 @@ const Header = ({
   setPriceSort,
   value,
   setValue,
+  visible,
+  setVisible,
 }) => {
   const navigate = useNavigate();
 

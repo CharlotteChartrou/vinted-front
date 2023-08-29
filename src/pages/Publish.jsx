@@ -1,7 +1,9 @@
 import { useState } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 const Publish = ({ token }) => {
+  const navigate = useNavigate();
   const [picture, setPicture] = useState();
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
@@ -12,8 +14,9 @@ const Publish = ({ token }) => {
   const [condition, setCondition] = useState("");
   const [city, setCity] = useState("");
   const [price, setPrice] = useState("");
+  const [exchange, setExchange] = useState(false);
 
-  return (
+  return token ? (
     <>
       <div className="container">
         <h2>Vends ton article</h2>
@@ -51,19 +54,46 @@ const Publish = ({ token }) => {
           }}
         >
           <div className="file-select">
-            <div className="dashed-preview-without">
+            <div
+              className="dashed-preview-without"
+              style={{ border: "2px lightgrey dashed", margin: "30px" }}
+            >
               <div className="input-design-default">
-                <label htmlFor="filePicker" className="label-file">
-                  + Ajoute une photo
-                </label>
-                <input
-                  style={{ display: "none" }}
-                  type="file"
-                  className="input-file"
-                  onChange={(event) => {
-                    setPicture(event.target.files[0]);
-                  }}
-                />
+                <div>
+                  <label
+                    htmlFor="filePicker"
+                    style={{
+                      color: "#007783",
+                      padding: "15px",
+                      display: "flex",
+                      alignItems: "center",
+                      gap: "20px",
+                      fontWeight: "bold",
+                    }}
+                  >
+                    <span style={{ fontSize: "40px" }}>+</span>{" "}
+                    <span>Choisissez une image</span>
+                  </label>
+                  <input
+                    style={{ display: "none" }}
+                    id="filePicker"
+                    type="file"
+                    onChange={(event) => {
+                      setPicture(event.target.files[0]);
+                    }}
+                  />
+                  {picture && (
+                    <img
+                      src={URL.createObjectURL(picture)}
+                      alt=""
+                      style={{
+                        width: "200px",
+                        height: "600%",
+                        objectFit: "cover",
+                      }}
+                    />
+                  )}
+                </div>
               </div>
             </div>
           </div>
@@ -162,7 +192,13 @@ const Publish = ({ token }) => {
               />{" "}
             </div>
             <div className="checkbox-input">
-              <input type="checkbox" name="exchange"></input>
+              <input
+                type="checkbox"
+                name="exchange"
+                onChange={() => {
+                  setExchange(!exchange);
+                }}
+              ></input>
               <span>Je suis intéressé(e) par les échanges</span>
             </div>
           </div>
@@ -172,6 +208,8 @@ const Publish = ({ token }) => {
         </form>
       </div>
     </>
+  ) : (
+    navigate("/login")
   );
 };
 

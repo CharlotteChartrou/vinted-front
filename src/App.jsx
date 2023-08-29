@@ -13,6 +13,7 @@ import Payment from "./pages/Payment";
 
 function App() {
   const [token, setToken] = useState(Cookies.get("token") || null);
+  const [id, setID] = useState(Cookies.get("id") || null);
   const [search, setSearch] = useState("");
   const [priceSort, setPriceSort] = useState("price-asc");
   const [value, setValue] = useState([10, 80]);
@@ -24,6 +25,15 @@ function App() {
     } else {
       Cookies.remove("token");
       setToken(null);
+    }
+  };
+  const handleID = (id) => {
+    if (id) {
+      Cookies.set("id", id, { expires: 15 });
+      setID(id);
+    } else {
+      Cookies.remove("id");
+      setID(null);
     }
   };
 
@@ -42,13 +52,26 @@ function App() {
       <Routes>
         <Route
           path="/"
-          element={<Home search={search} priceSort={priceSort} value={value} />}
+          element={
+            <Home
+              search={search}
+              priceSort={priceSort}
+              value={value}
+              token={token}
+            />
+          }
         />
         <Route path="/offer/:id" element={<Offer token={token} />} />
-        <Route path="/signup" element={<Signup handleToken={handleToken} />} />
-        <Route path="/login" element={<Login handleToken={handleToken} />} />
+        <Route
+          path="/signup"
+          element={<Signup handleToken={handleToken} handleID={handleID} />}
+        />
+        <Route
+          path="/login"
+          element={<Login handleToken={handleToken} handleID={handleID} />}
+        />
         <Route path="/publish" element={<Publish token={token} />} />
-        <Route path="/payment" element={<Payment />} />
+        <Route path="/payment" element={<Payment id={id} />} />
       </Routes>
     </Router>
   );

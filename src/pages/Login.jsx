@@ -3,7 +3,7 @@ import { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
-const Login = ({ handleToken }) => {
+const Login = ({ handleToken, handleID }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -24,7 +24,12 @@ const Login = ({ handleToken }) => {
                 password,
               }
             );
+
+            console.log(response.data);
+
             handleToken(response.data.token);
+            handleID(response.data._id);
+
             navigate("/publish");
           } catch (error) {
             console.log(error.response.data);

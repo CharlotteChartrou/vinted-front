@@ -517,10 +517,11 @@ input:focus {
 .form-checkout {
   padding: 15px;
   width: 400px;
-  height: 600px;
-  border: solid red 2px;
+  height: 500px;
+  border: solid lightgrey 2px;
   background-color: white;
   margin-top: 40px;
+  margin-left: 25%;
 }
 
 .form-order {
@@ -539,6 +540,7 @@ h3 {
 }
 .total {
   font-weight: bold;
+  border-top: 1px grey solid;
   font-size: 20px;
   display: flex;
   flex-direction: row;
@@ -548,10 +550,13 @@ h3 {
   text-align: end;
   width: 50%;
   font-size: 17px;
+  padding-top: 10px;
 }
 
 .total > span {
   width: 70%;
+
+  padding-top: 20px;
 }
 
 .lign-order {
