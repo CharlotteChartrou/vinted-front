@@ -2,9 +2,9 @@ import { CardElement, useStripe, useElements } from "@stripe/react-strip-js";
 import axios from "axios";
 import { useState } from "react";
 
-const CheckoutForm = ({ stripe }) => {
-  const [isLoading, useIsLoading] = useState(false);
-  const [paymentCompleted, usePaymentCompleted] = useState(false);
+const CheckoutForm = () => {
+  const [isLoading, setIsLoading] = useState(false);
+  const [paymentCompleted, setPaymentCompleted] = useState(false);
   const stripe = useStripe();
   const elements = useElements();
   const handleSubmit = async (event) => {
@@ -16,7 +16,7 @@ const CheckoutForm = ({ stripe }) => {
       const stripeResponse = await stripe.createToken(cardElement, {
         name: "coucou",
       });
-      console.log(stripResponse);
+      console.log(stripeResponse);
       const stripeToken = stripeResponse.token.id;
       const response = await axios.post(
         "https://lereacteur-vinted-api.herokuapp.com/payment",
